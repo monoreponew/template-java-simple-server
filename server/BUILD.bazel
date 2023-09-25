@@ -1,20 +1,21 @@
-load("@rules_rust//rust:defs.bzl", "rust_binary")
-load("@io_bazel_rules_docker//rust:image.bzl", "rust_image")
+load("@io_bazel_rules_docker//java:image.bzl", "java_image")
 load("@genrules//google_cloud_run:index.bzl", "deploy")
 
 package(default_visibility = ["//visibility:public"])
 
-rust_binary(
+java_binary(
     name = "server",
-    srcs = ["main.rs"],
+    srcs = ["Server.java"],
+    main_class = "Server",
 )
 
-rust_image(
-    name = "server_image",
-    binary = ":server",
+java_image(
+    name = "java_image",
+    srcs = ["Server.java"],
+    main_class = "Server",
 )
 
 deploy(
-    name="rust_service",
+    name="java_service",
     target=":server_image",
 )

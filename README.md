@@ -1,1 +1,1 @@
-# Simple Rust Server Template
+# Simple Java Server Template
