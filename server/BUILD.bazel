@@ -10,7 +10,7 @@ java_binary(
 )
 
 java_image(
-    name = "java_image",
+    name = "server_image",
     srcs = ["Server.java"],
     main_class = "Server",
 )
